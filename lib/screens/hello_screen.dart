@@ -8,7 +8,11 @@ class HelloScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: Text('Hello!'),
+        child: Text('Hello!', style: TextStyle(
+          fontSize: 32,
+          fontWeight: FontWeight.w500,
+          color: Colors.deepPurple,
+        ),),
       ),
     );
   }
