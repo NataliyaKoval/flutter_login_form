@@ -97,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (isFormValid) {
       rememberUserIfAllowed();
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => HelloScreen()));
+          .pushReplacement(MaterialPageRoute(builder: (context) => HelloScreen()));
     }
   }
 
