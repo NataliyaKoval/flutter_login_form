@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:login_form/screens/hello_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'screens/login_screen.dart';
 
-void main() {
+void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   initialize();
-  runApp(const MyApp());
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+  runApp(MyApp(isLoggedIn: isLoggedIn));
 }
 
 void initialize() async {
@@ -15,9 +19,10 @@ void initialize() async {
   FlutterNativeSplash.remove();
 }
 
-
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final isLoggedIn;
+
+  const MyApp({super.key, required this.isLoggedIn});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      home: isLoggedIn ? HelloScreen() : LoginScreen(),
     );
   }
 }

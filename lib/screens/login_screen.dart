@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:login_form/screens/hello_screen.dart';
 
 const adminLogin = 'admin';
@@ -15,6 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _loginFormKey = GlobalKey<FormState>();
   String login = '';
   String password = '';
+  bool isSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 onChanged: (value) => setState(() => password = value),
               ),
-              //Checkbox(value: value, onChanged: (){},),
+              SizedBox(
+                height: 20.0,
+              ),
+              CheckboxListTile(
+                title: Text('Remember me'),
+                controlAffinity: ListTileControlAffinity.leading,
+                value: isSelected,
+                onChanged: (_) => setState(() => isSelected = !isSelected),
+              ),
               SizedBox(
                 height: 20.0,
               ),
@@ -85,8 +95,16 @@ class _LoginScreenState extends State<LoginScreen> {
   void submitForm() {
     final isFormValid = _loginFormKey.currentState!.validate();
     if (isFormValid) {
+      rememberUserIfAllowed();
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => HelloScreen()));
+    }
+  }
+
+  void rememberUserIfAllowed() async {
+    if (isSelected) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setBool('isLoggedIn', true);
     }
   }
 }
