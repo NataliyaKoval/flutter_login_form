@@ -1,16 +1,20 @@
-# login_form
+# Login Form
 
-A new Flutter project.
+A simple application on Flutter - example of a login form.
 
-## Getting Started
+## Description and screenshots
 
-This project is a starting point for a Flutter application.
+This application starts with a splash screen created with [flutter_native_splash](https://pub.dev/packages/flutter_native_splash).
 
-A few resources to get you started if this is your first Flutter project:
+![img (3)](https://user-images.githubusercontent.com/69919727/197696362-7c834194-227e-4f9d-8f3c-b3327d041e03.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The next screen - login form. It contains login and passwords fields with validation 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot_20221025_092054](https://user-images.githubusercontent.com/69919727/197709406-a6156a43-3d79-4cbc-80e0-be0f208e225a.png)
+
+![Screenshot 2022-10-25 091636](https://user-images.githubusercontent.com/69919727/197708268-0216a271-9a82-4692-8cda-e6009b0506e2.png)
+
+After entering right login and password the Hello screen appears. If 'Remember me' was selected on the previous screen, Hello screen will appear after the splash screen next time. That functionality was added using [shared_preferences](https://pub.dev/packages/shared_preferences).
+
+![Screenshot_20221025_092455](https://user-images.githubusercontent.com/69919727/197710046-0fd4a6b0-32ca-4538-b13a-0375c8ba96e2.png)
+
