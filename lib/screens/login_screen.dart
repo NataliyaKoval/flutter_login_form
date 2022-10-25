@@ -21,7 +21,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Login screen'),
+      ),
       body: Padding(
         padding: EdgeInsets.all(20),
         child: Form(
@@ -53,6 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 20.0,
               ),
               CheckboxListTile(
+                tileColor: Colors.yellow,
                 title: Text('Remember me'),
                 controlAffinity: ListTileControlAffinity.leading,
                 value: isSelected,
@@ -61,9 +64,13 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 20.0,
               ),
-              ElevatedButton(
-                onPressed: submitForm,
-                child: Text('Submit'),
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: submitForm,
+                  child: Text('Submit', style: TextStyle(fontSize: 20),),
+                ),
               ),
             ],
           ),
